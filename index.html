@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Modern - Muhamad Raihan</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #111317;
+            --card-color: #1d1f23;
+            --text-color: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-gradient: linear-gradient(135deg, #00f2fe, #6a00ff);
+            --accent-color-1: #00f2fe;
+            --accent-color-2: #6a00ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- Animasi Entri --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Animasi Border --- */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            /* Efek latar belakang Aurora yang halus */
+            background-image: radial-gradient(circle at 10% 20%, rgba(0, 242, 254, 0.1), transparent 30%),
+                              radial-gradient(circle at 90% 80%, rgba(106, 0, 255, 0.1), transparent 30%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-color);
+            padding: 20px;
+        }
+
+        .profile-card {
+            position: relative;
+            display: flex;
+            max-width: 850px;
+            width: 100%;
+            background: var(--card-color);
+            border-radius: 20px;
+            overflow: hidden;
+            z-index: 1;
+            /* Transisi untuk efek angkat saat hover */
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        /* --- Glowing Animated Border --- */
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                transparent,
+                var(--accent-color-1),
+                var(--accent-color-2),
+                transparent 30%
+            );
+            animation: rotate 6s linear infinite;
+            z-index: -2;
+        }
+        
+        .profile-card::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: var(--card-color);
+            border-radius: 18px;
+            z-index: -1;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Kolom Kiri */
+        .card-sidebar {
+            width: 38%;
+            padding: 40px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Garis pemisah halus */
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .card-sidebar .profile-picture {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin-bottom: 25px;
+            object-fit: cover;
+            /* Border dengan gradien */
+            padding: 5px;
+            background: var(--accent-gradient);
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.3);
+        }
+
+        .card-sidebar h2 {
+            font-size: 2em;
+            margin-bottom: 8px;
+            font-weight: 700;
+            /* Efek teks gradien */
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        .card-sidebar .subtitle {
+            font-size: 1em;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        /* Kolom Kanan */
+        .card-main {
+            width: 62%;
+            padding: 40px;
+        }
+        
+        .card-section {
+            margin-bottom: 35px;
+            /* Animasi entri berurutan */
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        
+        /* Memberi jeda animasi untuk setiap section */
+        .card-section:nth-child(1) { animation-delay: 0.2s; }
+        .card-section:nth-child(2) { animation-delay: 0.4s; }
+        .card-section:nth-child(3) { animation-delay: 0.6s; }
+        
+        .card-section h3 {
+            font-size: 1.1em;
+            color: var(--accent-color-1);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-section p {
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            color: var(--text-color);
+        }
+
+        .contact-info i {
+            margin-right: 15px;
+            color: var(--accent-color-1);
+            width: 20px;
+            text-shadow: 0 0 10px var(--accent-color-1);
+        }
+
+        .social-links {
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.6em;
+            margin-right: 25px;
+            transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color-1);
+            transform: scale(1.2) translateY(-2px);
+            text-shadow: 0 0 15px var(--accent-color-1);
+        }
+
+        /* Responsif untuk layar kecil */
+        @media (max-width: 800px) {
+            .profile-card {
+                flex-direction: column;
+                width: 95%;
+                max-width: 450px;
+            }
+            .card-sidebar, .card-main {
+                width: 100%;
+            }
+            .card-sidebar {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <div class="card-sidebar">
+            <img src="foto.jpg" alt="Foto Profil" class="profile-picture">
+            <h2>Muhamad Raihan</h2>
+            <p class="subtitle">Web Developer | Mahasiswa</p>
+        </div>
+
+        <div class="card-main">
+            <div class="card-section">
+                <h3>Tentang Saya</h3>
+                <p>Mahasiswa Teknik Informatika dengan minat besar pada pengembangan web front-end dan back-end. Berkomitmen untuk terus belajar dan menciptakan solusi digital yang inovatif.</p>
+            </div>
+
+            <div class="card-section contact-info">
+                <h3>Informasi Kontak</h3>
+                <p><i class="fas fa-envelope"></i> kasefna@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +62 857-1594-6682</p>
+                <p><i class="fas fa-map-marker-alt"></i> Kp. Kebon Raya</p>
+            </div>
+            
+            <div class="card-section">
+                <h3>Temukan Saya di</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/raihan.ofcl_?igsh=MXF1bnM1YXlvcWtzYg==" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@raihan.ofcl" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://github.com/Raihanofcl" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://wa.me/6285715946682" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
